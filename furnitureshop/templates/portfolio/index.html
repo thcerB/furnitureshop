@@ -1,0 +1,66 @@
+{% extends 'portfolio/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Index
+{% endblock %}
+
+
+{% block body_block %}
+<div class="jumbotron">
+  <div class="row marketing">
+    <div class="col-lg-6">
+<h1 class="display-3">Brand name</h1>
+<h3 class="display-3">High Quality CNC Furniture</h3>
+<h5 class="display-3">by Brecht De Bo</h5>
+</div>
+<div class="col-lg-6">
+<img src="{% static "images/logo_uit.png" %}" alt="logo" height="300" width="300"/>
+</div>
+</div>
+{% if user.is_authenticated %}
+  Welcome back {{ user.username }}! You have visited this site {{ visits }} times!
+{% else %}
+  Welcome ! Please Register First.
+{% endif %}
+</div>
+
+<div class="row marketing">
+  <div class="col-lg-6">
+<h3>Most Liked Categories</h3>
+<p>
+{% if categories %}
+<ul class="list-group">
+{% for category in categories %}
+<li class="list-group-item">
+  <a href="/portfolio/category/{{ category.slug }}">{{ category.name }} <span class="tag tag-pill tag-primary">{{category.likes}}</span></a>
+</li>
+{% endfor %}
+
+</ul class="list-group">
+{% else %}
+<strong>There are no categories present.</strong>
+{% endif %}
+</p>
+</div>
+
+  <div class="col-lg-6">
+<h3>Most Viewed Products</h3>
+<p>
+{% if products %}
+<ul class="list-group">
+{% for product in products %}
+<li class="list-group-item"><a href="{{ product.url}}">
+  {{product.title}}  <span class="tag tag-pill tag-primary">{{product.views}}</span> </a>
+</li>
+{% endfor %}
+
+</ul class="list-group">
+{% else %}
+<strong>There are no products present.</strong>
+{% endif %}
+</p>
+</div>
+</div>
+
+{% endblock %}

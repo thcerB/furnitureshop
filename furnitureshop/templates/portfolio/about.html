@@ -1,0 +1,20 @@
+{% extends 'portfolio/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    About
+{% endblock %}
+
+
+{% block body_block %}
+
+<center><h1>Brand name</h1></center>
+<center><h3>High Quality CNC Furniture</h3></center>
+<center><h5>by Brecht De Bo</h5></center>
+
+<img src="{% static "images/logo_uit.png" %}" alt="logo" height="100" width="100"/>
+<p>Yeey about page</p>
+
+
+<a href="/portfolio/">Home</a><br />
+{% endblock %}
